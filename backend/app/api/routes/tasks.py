@@ -59,11 +59,7 @@ async def send_wird_task(
     fire at 07:00 Algiers time regardless of when UTC is.
     """
     now_utc = datetime.utcnow()
-<<<<<<< HEAD
     now_hhmm = now_utc.strftime("%H:%M")
-=======
-
->>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
     classes = db.query(ClassGroup).filter(
         ClassGroup.is_active == True,
         ClassGroup.telegram_chat_id.isnot(None),
@@ -115,11 +111,7 @@ async def send_wird_task(
             sent.append(cls.name)
             logger.info(f"Sent wird to {cls.name} ({cls.telegram_chat_id}) [tz={tz}]")
         except Exception as e:
-<<<<<<< HEAD
             logger.exception(f"Failed to send wird to {cls.name}")
-=======
-            logger.error(f"Failed to send wird to {cls.name}: {e}")
->>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 
     return {"sent": sent, "skipped_count": len(skipped), "time": now_hhmm}
 
