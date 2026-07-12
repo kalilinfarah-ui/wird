@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Safe area for notched phones ──────────────────────────────────── */
+@layer base {
+  :root {
+    --font-cairo: "Cairo", sans-serif;
+    --safe-top:    env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { box-sizing: border-box; }
+  html { direction: rtl; }
+
+  body {
+    font-family: var(--font-cairo), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+  }
+
+  /* Smooth scrolling */
+  * { scroll-behavior: smooth; }
+
+  /* Make tap targets at least 44px on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+}
+
+/* ── Utility classes ────────────────────────────────────────────────── */
+@layer utilities {
+  .safe-top    { padding-top:    max(0px, var(--safe-top)); }
+  .safe-bottom { padding-bottom: max(16px, var(--safe-bottom)); }
+
+  /* Fade-in for page transitions */
+  .page-enter {
+    animation: fadeIn 0.2s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ── Design tokens ──────────────────────────────────────────────────── */
+@layer components {
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100 p-4 md:p-6 shadow-sm;
+  }
+  .card-sm {
+    @apply bg-white rounded-xl border border-slate-100 p-3 shadow-sm;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800
+           text-white font-semibold px-4 py-2.5 rounded-xl
+           transition-colors duration-150 select-none
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center gap-2;
+  }
+  .btn-secondary {
+    @apply bg-slate-100 hover:bg-slate-200 active:bg-slate-300
+           text-slate-700 font-medium px-4 py-2.5 rounded-xl
+           transition-colors duration-150 select-none
+           flex items-center justify-center gap-2;
+  }
+  .btn-ghost {
+    @apply text-slate-500 hover:bg-slate-100 active:bg-slate-200
+           font-medium px-3 py-2 rounded-xl transition-colors duration-150
+           flex items-center justify-center gap-2;
+  }
+  .btn-danger {
+    @apply bg-red-50 hover:bg-red-100 text-red-600 font-medium
+           px-4 py-2.5 rounded-xl transition-colors duration-150
+           flex items-center justify-center gap-2;
+  }
+
+  /* Badges */
+  .badge-green  { @apply bg-emerald-50 text-emerald-700 text-xs px-2 py-0.5 rounded-full font-semibold border border-emerald-100; }
+  .badge-red    { @apply bg-red-50    text-red-600    text-xs px-2 py-0.5 rounded-full font-semibold border border-red-100;    }
+  .badge-yellow { @apply bg-amber-50  text-amber-700  text-xs px-2 py-0.5 rounded-full font-semibold border border-amber-100; }
+  .badge-gray   { @apply bg-slate-50  text-slate-500  text-xs px-2 py-0.5 rounded-full font-semibold border border-slate-200; }
+  .badge-blue   { @apply bg-blue-50   text-blue-600   text-xs px-2 py-0.5 rounded-full font-semibold border border-blue-100;  }
+
+  /* Form inputs */
+  .input {
+    @apply w-full px-3 py-2.5 border border-slate-200 rounded-xl text-sm
+           focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent
+           bg-white placeholder:text-slate-300 transition-shadow;
+  }
+  .input-label {
+    @apply block text-sm font-medium text-slate-600 mb-1;
+  }
+
+  /* Section header */
+  .section-title {
+    @apply text-lg font-bold text-slate-800 mb-4;
+  }
+
+  /* Mobile-safe padding for page content */
+  .page-content {
+    /* extra bottom padding so bottom-nav doesn't cover content */
+    @apply pb-24 md:pb-6;
+  }
+}

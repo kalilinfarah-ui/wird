@@ -1,0 +1,51 @@
+# ورد — منصة إدارة الورد اليومي عبر تيليغرام
+
+نظام ذكي لإدارة الورد اليومي (أذكار / قرآن) عبر تيليغرام مع لوحة تحكم للمعلمات.
+
+## المميزات
+- بوت تيليغرام يرسل الورد يومياً بزر تأكيد
+- تتبع الحضور فوري ومباشر
+- لوحة تحكم كاملة للمعلمة (Next.js)
+- تذكيرات تلقائية للطلاب الذين لم يكملوا
+- تقارير يومية / أسبوعية / شهرية
+- نظام streak (تحفيزي)
+- مجاني 100% (Supabase + Vercel + Render)
+
+## التقنيات
+| الطبقة | التقنية |
+|--------|---------|
+| Frontend | Next.js 14, TypeScript, Tailwind, shadcn/ui |
+| Backend | FastAPI, Python, SQLAlchemy, Celery |
+| Database | PostgreSQL (Supabase) |
+| Cache | Redis (Upstash) |
+| Bot | python-telegram-bot |
+| Auth | NextAuth.js + Telegram Login |
+
+## النشر المجاني
+- **Frontend**: Vercel (مجاني)
+- **Backend**: Render (مجاني)
+- **Database**: Supabase (مجاني — 500MB)
+- **Redis**: Upstash (مجاني — 10K req/day)
+
+## البدء السريع
+```bash
+# 1. استنساخ المشروع
+git clone <repo>
+
+# 2. Backend
+cd backend
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn app.main:app --reload
+
+# 3. Frontend
+cd frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+## الوثائق
+- [دليل الإعداد](docs/SETUP.md)
+- [API Documentation](docs/API.md)
+- [دليل النشر المجاني](docs/DEPLOYMENT.md)
