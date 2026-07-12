@@ -33,7 +33,11 @@
    - أرسلي أي رسالة في المجموعة
    - افتحي: `https://api.telegram.org/bot<TOKEN>/getUpdates`
    - ابحثي عن `"chat":{"id":` — سيكون رقماً سالباً مثل `-100123456789`
+<<<<<<< HEAD
 -1004396720180
+=======
+
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 ---
 
 ## الخطوة 3 — Render (Backend)
@@ -56,7 +60,11 @@
    SUPABASE_URL        = <من Supabase>
    SUPABASE_SERVICE_KEY= <من Supabase>
    ```
+<<<<<<< HEAD
 5. انتظري النشر → انسخي الرابط: `https://wird-7mgn.onrender.com`
+=======
+5. انتظري النشر → انسخي الرابط: `https://wird-api.onrender.com`
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 
 ---
 
@@ -68,7 +76,11 @@
 2. **Add New Monitor**:
    - Type: **HTTP(s)**
    - Friendly Name: `ورد Backend`
+<<<<<<< HEAD
    - URL: `https://wird-7mgn.onrender.com/health`
+=======
+   - URL: `https://wird-api.onrender.com/health`
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
    - Monitoring Interval: **5 minutes**
 3. احفظي — الآن Render لن ينام أبداً ✅
 
@@ -85,7 +97,11 @@
 
 | الحقل | القيمة |
 |-------|--------|
+<<<<<<< HEAD
 | URL | `https://wird-7mgn.onrender.com/api/tasks/send-wird` |
+=======
+| URL | `https://wird-api.onrender.com/api/tasks/send-wird` |
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 | Method | POST |
 | Header | `X-Cron-Secret: <نفس CRON_SECRET في Render>` |
 | Schedule | كل دقيقة: `* * * * *` |
@@ -97,7 +113,11 @@
 
 | الحقل | القيمة |
 |-------|--------|
+<<<<<<< HEAD
 | URL | `https://wird-7mgn.onrender.com/api/tasks/send-reminders` |
+=======
+| URL | `https://wird-api.onrender.com/api/tasks/send-reminders` |
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 | Method | POST |
 | Header | `X-Cron-Secret: <CRON_SECRET>` |
 | Schedule | كل 5 دقائق: `*/5 * * * *` |
@@ -106,7 +126,11 @@
 
 | الحقل | القيمة |
 |-------|--------|
+<<<<<<< HEAD
 | URL | `https://wird-7mgn.onrender.com/api/tasks/send-summary` |
+=======
+| URL | `https://wird-api.onrender.com/api/tasks/send-summary` |
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 | Method | POST |
 | Header | `X-Cron-Secret: <CRON_SECRET>` |
 | Schedule | كل يوم الساعة 10 مساءً: `0 22 * * *` |
@@ -123,7 +147,11 @@
    ```
    NEXTAUTH_URL    = https://your-app.vercel.app
    NEXTAUTH_SECRET = <نص عشوائي>
+<<<<<<< HEAD
    NEXT_PUBLIC_API_URL = https://wird-7mgn.onrender.com/api
+=======
+   NEXT_PUBLIC_API_URL = https://wird-api.onrender.com/api
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
    NEXT_PUBLIC_TELEGRAM_BOT_USERNAME = your_bot_username
    ```
 4. Deploy
@@ -149,13 +177,21 @@
 
 ```bash
 # 1. تسجيل دخول
+<<<<<<< HEAD
 curl -X POST https://wird-7mgn.onrender.com/api/auth/login \
+=======
+curl -X POST https://wird-api.onrender.com/api/auth/login \
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
   -H "Content-Type: application/json" \
   -d '{"email":"you@example.com","password":"yourpass"}'
 # ← احفظي access_token
 
 # 2. إنشاء فصل
+<<<<<<< HEAD
 curl -X POST https://wird-7mgn.onrender.com/api/classes/ \
+=======
+curl -X POST https://wird-api.onrender.com/api/classes/ \
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -168,7 +204,11 @@ curl -X POST https://wird-7mgn.onrender.com/api/classes/ \
 # ← احفظي class_id
 
 # 3. ربط Webhook
+<<<<<<< HEAD
 curl -X POST https://wird-7mgn.onrender.com/api/classes/<class_id>/set-webhook \
+=======
+curl -X POST https://wird-api.onrender.com/api/classes/<class_id>/set-webhook \
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
   -H "Authorization: Bearer <token>"
 ```
 
@@ -203,7 +243,11 @@ curl -X POST https://wird-7mgn.onrender.com/api/classes/<class_id>/set-webhook \
 
 ```bash
 # Backend حي؟
+<<<<<<< HEAD
 curl https://wird-7mgn.onrender.com/health
+=======
+curl https://wird-api.onrender.com/health
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
 # → {"status":"ok","app":"ورد"}
 
 # Webhook مضبوط؟
@@ -211,7 +255,11 @@ curl https://api.telegram.org/bot<TOKEN>/getWebhookInfo
 # → تحقق من url و pending_update_count
 
 # اختبار مهمة الورد يدوياً
+<<<<<<< HEAD
 curl -X POST https://wird-7mgn.onrender.com/api/tasks/send-wird \
+=======
+curl -X POST https://wird-api.onrender.com/api/tasks/send-wird \
+>>>>>>> 308d1fbc6efa63e8525b0a8ac7cc94e3dc3ab3bf
   -H "X-Cron-Secret: <CRON_SECRET>"
 ```
 
